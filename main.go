@@ -36,13 +36,13 @@ func main() {
 
 	// Consume messages from the queue
 	msgs, err := ch.Consume(
-		q.Name, // queue
-		"",     // consumer
-		true,   // auto-ack
-		false,  // exclusive
-		false,  // no-local
-		false,  // no-wait
-		nil,    // args
+		"hello", // queue
+		"",      // consumer
+		true,    // auto-ack
+		false,   // exclusive
+		false,   // no-local
+		false,   // no-wait
+		nil,     // args
 	)
 	if err != nil {
 		log.Fatalf("Failed to consume messages: %s", err)
