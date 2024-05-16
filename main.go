@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// Connect to RabbitMQ server
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@34.31.194.37:5672/")
 	if err != nil {
 		log.Fatalf("Failed to connect to RabbitMQ: %s", err)
 	}
@@ -36,13 +36,13 @@ func main() {
 
 	// Consume messages from the queue
 	msgs, err := ch.Consume(
-		"hello", // queue
-		"",      // consumer
-		true,    // auto-ack
-		false,   // exclusive
-		false,   // no-local
-		false,   // no-wait
-		nil,     // args
+		q.Name, // queue
+		"",     // consumer
+		true,   // auto-ack
+		false,  // exclusive
+		false,  // no-local
+		false,  // no-wait
+		nil,    // args
 	)
 	if err != nil {
 		log.Fatalf("Failed to consume messages: %s", err)
